@@ -1,0 +1,10 @@
+POST: /products
+[
+  {
+    "name": "Glass Slipper",
+    "description": "The only shoes you'll ever need!",
+    "price": 100,
+    "brand": "dusty",
+    "quantity": 12
+  }
+]

@@ -1,0 +1,18 @@
+<template>
+    <div class = 'field'>
+        <label class = 'label'>{{label}}</label>
+        <div class = 'control'><textarea :class = 'inputtypeclass' class = 'textarea' type = 'text' text = 'input' v-bind:value= "productparam" v-on:input= "$emit('input', $event.target.value)" ></textarea>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: ['label', 'inputtypeclass'],
+        model: {
+            prop: 'productparam',
+            event: 'input'
+        }
+    }
+</script>
+    

@@ -1,0 +1,31 @@
+{
+  "name": "zigy-demo-store",
+  "version": "1.0.0",
+  "description": "A demo online store with Admin functions.",  
+  "scripts": {
+    "dev": "cd frontend && npm start & cd backend && npm run dev",
+    "start": "cd backend && npm i && npm start & cd frontend && npm i && npm start --prefix dist",
+    "frontend-deploy": "git subtree push - prefix frontend/dist heroku-front master",
+    "backend-deploy": "git subtree push - prefix backend heroku-back master"
+  },
+  "dependencies": {
+    "sails": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://littlezigy@bitbucket.org/littlezigy/zigy-demo-store.git"
+  },
+  "keywords": [
+    "sails",
+    "vue",
+    "estore",
+    "ecommerce"
+  ],
+  "author": "Adesuwa Tolu Dawodu",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/littlezigy/zigy-demo-store#readme",
+  "engines": {
+      "node": "^10.15",
+      "npm": "6.7.0"
+  }
+}
