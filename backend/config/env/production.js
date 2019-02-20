@@ -150,7 +150,7 @@ module.exports = {
     ***************************************************************************/
     cors: {
        allowOrigins: [
-         'https://ecommerce-frontend.herokuapp.com'
+         'https://ecommerce-demo-frontend.herokuapp.com'
        ]
     },
   },
