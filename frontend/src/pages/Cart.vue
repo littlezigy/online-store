@@ -14,16 +14,22 @@
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Total</th>
-                <th></th>
             </thead>
             <tr v-for= 'field in cartitem' :key = field.key>
                 <td><img v-bind:src = "`./static/productpics/${field.id}.jpg`" class = 'image is-64x64'/></td>
                 <td>{{field.name}}</td>
                 <td>{{field.brand}}</td>
-                <td></td>
+                <td>
+                    <span class = 'is-link tag button' @click = 'updatecart(field.id, field.quantity)'>Update</span>
+                    <input size = 3 maxlength = 3 text = '1' v-model='field.quantity'> 
+                    <span class = 'is-danger tag'> Delete
+                        <button class = 'delete' @click = 'removefromcart(field.id)'>
+                        </button>
+                    </span>
+                </td>
+                
                 <td>₦{{field.price}}</td>
                 <td></td>
-                <td><span class = 'is-danger tag delete' @click = 'removefromcart()'></span></td>
                 
             </tr>
         </table>
@@ -48,6 +54,8 @@ export default {
             usercart: "",
             carturl: '',
             cartitem: {},
+            orderqty: 1,
+            deleteurl: ''
         }
     },
     methods: {
@@ -64,8 +72,14 @@ export default {
                 {owner: window.sessionStorage.uid ,
                 cart: window.sessionStorage.cartid})
         },
-        removefromcart: function() {
-            console.log("remove");
+        removefromcart: function(query) {
+            console.log("REMOVE " + query);
+            this.deleteurl = 'shoppingcart/' + sessionStorage.cartid + '/product/' + query;
+            api.delete(this.deleteurl);
+            window.location.reload();
+        },
+        updatecart: function(id, quantity) {
+            console.log("Product instance id: ", id, "\nProduct quantity: ", quantity);
         }
     },
     computed: {

@@ -23,6 +23,10 @@ module.exports = {
       required: true,
       unique: true
     },
+    phonenumber: {
+      type: 'string',
+      defaultsTo: '+234000000000'
+    },
     //relationships
     userlevel: {
       model: 'usertype'

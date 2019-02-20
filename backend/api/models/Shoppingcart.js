@@ -10,8 +10,8 @@ module.exports = {
 //user one to many
   attributes: {
     product: {
-      collection: 'products',
-      via: 'carts'
+      collection: 'productitem',
+      via: 'cart'
     },
     owner: {
       model: 'user'

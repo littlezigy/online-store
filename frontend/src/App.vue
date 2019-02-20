@@ -30,10 +30,14 @@
       </div>
       <div>
         <p>Zigy store is a fantasy store. We have sourced and gotten every magical item that has ever existed.</p>
-        <p style = 'text-align: center; margin-top: 4em;'>
-          <router-link to = '/admin/login'>Admin? Log in here</router-link></p>
-          <h3>{{footerwelcome}}</h3>
-          <button @click = 'logout()'>Logout</button>
+
+        <h3 style = "margin-top: 1em;">{{footerwelcome}}</h3>
+        <router-link to = '/login' v-if = 'showlogin'>Login</router-link>
+        <button v-else @click = 'logout()'>Logout</button>
+
+          <p style = 'text-align: center; margin-top: 3em;'>
+            <router-link to = '/admin/login'>Admin? Log in here</router-link>
+          </p>
       </div>
     </footer>
   </div>

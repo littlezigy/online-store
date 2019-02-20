@@ -27,10 +27,6 @@ module.exports = {
     //relationships
     category: {
       model: 'productcategory'
-    },
-    carts: {
-      collection: 'shoppingcart',
-      via: 'product'
     }
   }
 };

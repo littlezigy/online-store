@@ -4,11 +4,16 @@
             <div class = 'level-left'><router-link to = '/cart' class = 'button is-primary'>Back</router-link></div>
             <div class = 'level-right'><a class = 'button is-success' @click = 'confirmorder()'>Confirm Order</a></div>
         </div>
-        <p class = 'title is-4'>Please put in your phone number</p>
         <div class = 'field'>
-            <label class = 'label'>Please put in your phone number</label>
+            <label class = 'label'>Please confirm your email address</label>
             <div class = 'control'>
-                <input class = 'input' type = 'text' v-model= 'phonenum' placeholder="+2348012345678" >
+                <input class = 'input' type = 'text' v-model= 'email' placeholder="Please put in your email address" >
+            </div>
+        </div>
+        <div class = 'field'>
+            <label class = 'label'>Please confirm your phone number</label>
+            <div class = 'control'>
+                <input class = 'input' type = 'text' v-model= 'phonenum' placeholder="Please put in your phone number" >
             </div>
         </div>
     </div>
@@ -20,7 +25,8 @@ export default {
     data() {
         return{
             name: 'Please put in your phone number',
-            phonenum: ''
+            phonenum: window.sessionStorage.phone,
+            email: window.sessionStorage.email
         }
     },
     methods: {
@@ -28,6 +34,7 @@ export default {
             api.post('/neworder',{
                 user: window.sessionStorage.uid,
                 cart: window.sessionStorage.cartid,
+                email: this.email,
                 phone: this.phonenum});
         }
     },

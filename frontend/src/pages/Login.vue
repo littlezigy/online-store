@@ -10,8 +10,6 @@
             </ul>
         </div>
 
-        <div class = 'error' v-if = 'error'>{{errors}}</div>
-
         <div id = 'logincontainer'>
             <transition name= 'slide-fade'>
                 <div class = 'field box' v-if='showlogin' key = 'logindiv'>
@@ -85,6 +83,8 @@
                     if(response.data.loggedin === true) {
                         window.sessionStorage.uname = response.data.uname;
                         window.sessionStorage.uid = response.data.loginid;
+                        window.sessionStorage.email = response.data.email;
+                        window.sessionStorage.phone = response.data.phonenumber;
                         this.$router.push({path: "/dashboard"})
                     }});
                     window.sessionStorage.reloaddashboard = 1;

@@ -13,6 +13,8 @@
  * https://sailsjs.com/config/security
  */
 
+require('dotenv').config();
+
 module.exports.security = {
 
   /***************************************************************************
@@ -27,10 +29,9 @@ module.exports.security = {
   * https://sailsjs.com/docs/concepts/security/cors                          *
   *                                                                          *
   ***************************************************************************/
-
   cors: {
     allRoutes: true,
-    allowOrigins: ['http://localhost:8080', 'http://localhost:8081', 'https://zigy-dist-vue.herokuapp.com'],
+    allowOrigins: [process.env.FRONTEND_HOST],
     allowCredentials: true
   },
 

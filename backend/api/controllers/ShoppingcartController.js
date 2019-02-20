@@ -20,6 +20,9 @@ module.exports = {
             console.log("Session userid " + req.session.user.id + "exists!");
             var user = await User.findOne({id:req.session.user.id}).populate('cart');
             var usercart = user.cart[0];
+            var createnewproductinstance = 1;
+            var product = await Products.findOne({id: req.body.productid});
+            console.log("Product details ", product);
             console.log("User found. Has cart?\n", user.cart);
             
             //if shopping cart doesn't exist for user, create one.
@@ -32,8 +35,31 @@ module.exports = {
                 console.log("\nNew cart created! ", usercart);
             }
             console.log('Adding to cart...', usercart, '\nUser cart id: ', usercart.id);
-            await Shoppingcart.addToCollection(usercart.id, 'product').members(req.body.productid);
-            res.send({id: usercart.id})
+
+            //--------------------Create new instance of product-------------------------------
+
+            var cartitem = await Productitem.findOrCreate({
+                where: {
+                    cart: usercart.id,
+                    name: product.name,
+                    description: product.description,
+                    price: product.price,
+                    brand: product.brand
+                }
+            }, {
+                cart: usercart.id,
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                brand: product.brand
+            });
+            console.log('Item quantity: ', cartitem.quantity);
+            cartitem.quantity++;
+
+            await Productitem.update({id: cartitem.id}).set(
+                {quantity: cartitem.quantity}
+            )
+            res.send({id: usercart.id});
 
         } else{
             if (req.session.cart === undefined || req.session.cart === null) { 
@@ -58,4 +84,3 @@ module.exports = {
         res.send({id: usercart.id});
     }
 };
-

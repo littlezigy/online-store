@@ -26,10 +26,9 @@ module.exports = {
         console.log(orderdetails);
         //to get email addr and phone number
         phone = req.body.phone; 
+        var email = req.body.email;
 
         var user = await User.findOne({id:printcart.owner});
-        console.log(user.email);
-        var email = user.email;
 
         sendemail(email, orderdetails); 
         sendtext(phone, orderdetails);

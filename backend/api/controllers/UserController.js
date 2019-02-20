@@ -34,7 +34,7 @@ module.exports = {
         console.log("Session cart exists.", req.session.cart);
       }
 
-      res.send({loggedin: true, uname: req.body.username, loginid: finduser.id});
+      res.send({loggedin: true, uname: req.body.username, loginid: finduser.id, email: finduser.email, phonenumber: finduser.phonenumber});
     }
   },
 

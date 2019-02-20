@@ -23,6 +23,7 @@
 </div></template>
 
 <script>
+    //import dotenv from 'dotenv'
     import {api} from '../gateways/api'
     import ProductCard from '../components/ProductCard.vue'
     export default {
@@ -36,6 +37,7 @@
                 message: 'Demo Online Store. Everything is sold here!',
                 subtitle: 'Purchases are free, shipping is instant',
                 productid: [],
+                //test: process.env.VUE_APP_TESTERV
             }
         },
         created() {
@@ -44,6 +46,8 @@
                 var self = this;
                 self.productlistings=response.data;
             });
+             //console.log(process.env.VUE_APP_TESTERV);
+             console.log("boom!");
         },
         methods: {
             
