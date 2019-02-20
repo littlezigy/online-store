@@ -69,8 +69,13 @@
                 api.post('/user', {
                     username: this.newusername,
                     email: this.newmail,
-                    password: this.newpass})
-                
+                    password: this.newpass
+                })
+                .then(
+                    response=>{
+                        this.loginIsActive = true;
+                    }
+                )
             }, login: function() {
                 this.buttonstate = 'is-loading';
                 api.post('/user/login', {

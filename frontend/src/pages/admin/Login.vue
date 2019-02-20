@@ -51,7 +51,7 @@
                     response=>{
                     console.log(response.data);
                     if(response.data === true) {
-                        this.$router.push({path: '/admin'})
+                        this.$router.push({path: '/admin/products'})
                     }});
             }
         }
