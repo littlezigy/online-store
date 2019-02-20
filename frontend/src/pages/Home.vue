@@ -11,6 +11,7 @@
     </section>
 
     <div id = 'store-banners'>
+        
         <div class = 'mini-banner'>
         </div>
     </div>
@@ -37,7 +38,7 @@
                 message: 'Demo Online Store. Everything is sold here!',
                 subtitle: 'Purchases are free, shipping is instant',
                 productid: [],
-                //test: process.env.VUE_APP_TESTERV
+                //test: process.env.TESTERV
             }
         },
         created() {
@@ -48,6 +49,7 @@
             });
              //console.log(process.env.VUE_APP_TESTERV);
              console.log("boom!");
+             console.log(process.env.NODE_ENV);
         },
         methods: {
             
