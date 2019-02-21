@@ -21,7 +21,7 @@ module.exports = {
     });
     //console.log(finduser.id);
 
-    if (finduser == false) {
+    if (finduser == false || finduser == undefined) {
       res.notFound();
     } else {
       console.log('--running else--');

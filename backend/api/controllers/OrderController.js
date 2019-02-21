@@ -18,6 +18,7 @@ module.exports = {
                 owner: req.body.user
             }
         }).populate('product');
+        var ordermessage = '';
 
         for (items in printcart.product) {
             item = printcart.product[items];
@@ -30,8 +31,11 @@ module.exports = {
 
         var user = await User.findOne({id:printcart.owner});
 
-        sendemail(email, orderdetails); 
-        sendtext(phone, orderdetails);
+        ordermessage += await sendemail(email, orderdetails); 
+        console.log("\nAfter email, the message is ", ordermessage);
+
+        ordermessage += await sendtext(phone, orderdetails);
+        console.log("\nAfter text, Printing order message to be returned to browser ", ordermessage);
 
         await Order.create({
             owner: user.id,
@@ -40,8 +44,9 @@ module.exports = {
         await Shoppingcart.destroy({
             id: printcart.id
         });
+        console.log("Final message ", ordermessage);
 
-        res.send("done");
+        res.send(ordermessage);
     }
 };
 

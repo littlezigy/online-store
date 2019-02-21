@@ -76,12 +76,17 @@ module.exports = {
 
     getcartid: async function(req, res) {
         //request is user id
-        console.log("-----------------------------Initiating server contact------------------------------------\nSession userid " + req.session.user.id + "exists!");
-        var user = await User.findOne({id:req.session.user.id}).populate('cart');
-        var usercart = user.cart[0];
-        console.log("User found. Has cart?\n", user.cart);
-        console.log("User cart id: ", usercart.id);
-        
-        res.send({id: usercart.id});
+        if(req.session.user) {
+            console.log("-----------------------------Initiating server contact------------------------------------\nSession userid " + req.session.user.id + "exists!");
+            var user = await User.findOne({id:req.session.user.id}).populate('cart');
+            var usercart = user.cart[0];
+            console.log("User found. Has cart?\n", user.cart);
+            console.log("User cart id: ", usercart.id);
+            
+            res.send({id: usercart.id});
+        } else {
+            console.log("User not logged in");
+            res.send("User not logged in");
+        }
     }
 };
