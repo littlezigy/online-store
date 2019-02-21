@@ -17,7 +17,8 @@
     </div>
     <h3 class = 'subtitle is-1' style ="text-align: center;">Best Performing Items</h3>
     <div class = 'grid'>
-        <product-card :productid = 'productlistings[0].id' :key = 'productlistings[0].id' 
+        <product-card :productid = 'productlistings[0].id' 
+        :key = 'productlistings[0].id' 
         :name = 'productlistings[0].name' :desc = 'productlistings[0].description' :brand = 'productlistings[0].brand' :price = 'productlistings[0].price'>
         </product-card>
         <product-card :productid = 'productlistings[3].id' :key = 'productlistings[3].id' 
@@ -42,8 +43,7 @@
             return{ 
                 productlistings: 0,
                 message: 'Demo Online Store. Everything is sold here!',
-                subtitle: 'Purchases are free, shipping is instant',
-                productid: []
+                subtitle: 'Purchases are free, shipping is instant'
             }
         },
         created() {

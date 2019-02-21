@@ -51,6 +51,9 @@
                     brand: this.brand,
                     quantity: this.qty
                 })
+                .then(response => {
+                    this.$router.push({path: '/admin/products'});
+                })
             }
         }
     }
