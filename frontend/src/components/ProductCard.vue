@@ -8,10 +8,11 @@ s<template>
                 {{summary}}
             </div>
         </router-link>
-            <div class = 'level'>
+            <div class = 'level cartactions'>
                 <p class = 'level-left'>₦ {{price}}</p>
                 <button class  = 'button is-success level-right' :class = 'buttonstate' @click = 'addToCart()'>Add to Cart</button>
             </div>
+            <p class = 'message has-text-centered has-text-success'>{{message}}</p>
     </div>
 </template>
 
@@ -22,7 +23,8 @@ export default {
     data () {
         return {
             summary: "",
-            buttonstate: ''
+            buttonstate: '',
+            message: ''
         }
     },
     props: ['name', 'brand', 'desc', 'productid', 'price'],
@@ -37,7 +39,16 @@ export default {
             .then(response => {
                 self = this;
                 window.sessionStorage.cartid = response.data.id;
-                setTimeout(function() {self.buttonstate = '';console.log("Ping!");}, 500);
+                setTimeout(function() {
+                    self.buttonstate = '';
+                    console.log("Ping!");
+                    self.message = "Added to cart!";
+
+                    setTimeout(function() {
+                        self.message = '';
+                        console.log("done!");
+                    }, 1000);
+                }, 500);
             });
         },
         summarize(wordy) {
@@ -81,5 +92,8 @@ export default {
     text-transform: uppercase;
     color: grey;
     margin: 0 auto;
+}
+.message {
+    font-weight: bold;
 }
 </style>

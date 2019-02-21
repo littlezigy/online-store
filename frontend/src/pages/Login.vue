@@ -1,7 +1,7 @@
 <template>
     <div class = 'container'>
         <div class = 'title'>
-            <h1>{{message}}</h1>
+            <h1 class = 'has-text-centered'>Enter details below</h1>
         </div>
         <div class = 'tabs is-centered'>
             <ul>
@@ -10,10 +10,13 @@
             </ul>
         </div>
 
+        <p class = 'message'>{{message}}</p>        
+        <p class = 'error'>{{error}}</p>
+
         <div id = 'logincontainer'>
             <transition name= 'slide-fade'>
                 <div class = 'field box' v-if='showlogin' key = 'logindiv'>
-                    <label class = 'label'>Username or email:</label>
+                    <label class = 'label'>Username</label>
                     <div class = 'control'><input class = 'input is-primary' type = 'text' v-model= 'usern' v-on:keyup.enter = 'login()'></div>
                     
                     <label class = 'label'>Password</label>
@@ -49,7 +52,7 @@
                 showlogin: true,
                 loginIsActive: true,
                 createIsActive: false,
-                message: 'Log in below.',
+                message: '',
                 users: 0,
                 newusername: null,
                 newmail: null,
@@ -59,12 +62,14 @@
                 loginname: null,
                 usern: null,
                 pass: null,
-                buttonstate: ''
+                buttonstate: '',
+                error: ''
             }
         },
         methods: {
             //API calls
             createac: function() {
+                var self = this;
                 this.buttonstate = 'is-loading';
                 api.post('/user', {
                     username: this.newusername,
@@ -73,9 +78,23 @@
                 })
                 .then(
                     response=>{
-                        this.loginIsActive = true;
+                        this.message = 'Please login with your newly created account details.'
+                        this.buttonstate = '';
+                        setTimeout(function() {
+                            this.loginIsActive = true;
+                            console.log("Ping!");
+                        }, 500);
                     }
-                )
+                ).catch(function(error){
+                    if (error.response.data.code == 'E_UNIQUE') {
+                        for(var attr in error.response.data.attrNames) {
+                            self.error = "An account with that " + error.response.data.attrNames[attr] + " already exists.";
+                        }
+                    } else {
+                        self.error = "Error creating an account. Please try again";
+                    }
+                    self.buttonstate = '';
+                })
             }, login: function() {
                 this.buttonstate = 'is-loading';
                 api.post('/user/login', {
@@ -114,6 +133,10 @@
 </script>
 
 <style scoped>
+.error {
+    color: red;
+    text-align: center;
+}
 .slide-fade-enter-active {
   transition: all .6s;
 }

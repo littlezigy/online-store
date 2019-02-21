@@ -33,6 +33,7 @@
                 
             </tr>
         </table>
+        <span class = button @click = 'test()'>test</span>
 
         <table class = 'table'>
             <th>Total</th>
@@ -59,18 +60,30 @@ export default {
         }
     },
     methods: {
+        test: function() {
+            this.$root.logout();
+        },
         getcart: function() {
             console.log('Click', window.sessionStorage.cartid, this.carturl);
             api.get(this.carturl).then(response => {
                 var self = this;
                 self.cartitem=response.data.product;
+            }).catch(error=> {
+                console.log("Error");
             });
         },
         checkout: function() {
+            self = this;
             console.log("-------------------CHECKOUT-------------------------");
             api.post('/order', 
                 {owner: window.sessionStorage.uid ,
                 cart: window.sessionStorage.cartid})
+                .catch(error=> {
+                    console.log("Error. Signing out");
+                    api.get('/user/logout');
+                    window.sessionStorage.clear();
+                    window.location.reload();
+                })
         },
         removefromcart: function(query) {
             console.log("REMOVE " + query);
@@ -96,7 +109,6 @@ export default {
         } else {
             this.carturl = '/shoppingcart/' + window.sessionStorage.cartid;
             this.message = window.sessionStorage.unameCaps + " Shopping Cart";
-            console.log(this.usercart);
             this.getcart();
         }
     }

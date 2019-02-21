@@ -4,6 +4,7 @@
             <div class = 'level-left'><router-link to = '/cart' class = 'button is-primary'>Back</router-link></div>
             <div class = 'level-right'><a class = 'button is-success' @click = 'confirmorder()'>Confirm Order</a></div>
         </div>
+        <p class = message>{{message}}</p>
         <div class = 'field'>
             <label class = 'label'>Please confirm your email address</label>
             <div class = 'control'>
@@ -26,7 +27,8 @@ export default {
         return{
             name: 'Please put in your phone number',
             phonenum: window.sessionStorage.phone,
-            email: window.sessionStorage.email
+            email: window.sessionStorage.email,
+            message: ''
         }
     },
     methods: {
@@ -35,7 +37,11 @@ export default {
                 user: window.sessionStorage.uid,
                 cart: window.sessionStorage.cartid,
                 email: this.email,
-                phone: this.phonenum});
+                phone: this.phonenum})
+                .then(response =>{
+                    console.log(response.data);
+                    this.message = response.data;
+                });
         }
     },
     created () {
@@ -45,7 +51,6 @@ export default {
             this.$router.push({path: "/login"});
         } else {
             this.carturl = '/shoppingcart/' + window.sessionStorage.cartid;
-            this.message = window.sessionStorage.unameCaps + " Shopping Cart";
             console.log(this.usercart);
         }
     }

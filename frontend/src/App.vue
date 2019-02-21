@@ -36,7 +36,7 @@
         <button v-else @click = 'logout()'>Logout</button>
 
           <p style = 'text-align: center; margin-top: 3em;'>
-            <router-link to = '/admin/login'>Admin? Log in here</router-link>
+            <router-link to = '/admin/login' v-if = 'showlogin'>Admin? Log in here</router-link>
           </p>
       </div>
     </footer>
@@ -58,7 +58,7 @@ export default {
     expandmenu: function() {
       this.isactive = !this.isactive
     },
-    logout() {
+    logout: function() {
       api.get('/user/logout');
       self = this;
       window.sessionStorage.clear();

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1 class="title">
-            <h1>{{message}}</h1>
-        </h1>
+        <div class = 'container'>
+            <h1 class="title has-text-centered">{{message}}</h1>
+        </div>
         <div class = 'grid'>
             <product-card v-for = 'product in productlistings' :productid = 'product.id' :key = 'product.id' 
             :name = 'product.name' :pix = 'product.pix' :desc = 'product.description' :brand = 'product.brand' :price = 'product.price'>
@@ -39,11 +39,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+h1 {
+    margin-top: 3em;
+}
 .grid {
-    display: grid;
     grid-gap: 2em;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    padding: 10%;
 }
 </style>

@@ -12,12 +12,19 @@
 
     <div id = 'store-banners'>        
         <div class = 'mini-banner'>
+            
         </div>
     </div>
     <h3 class = 'subtitle is-1' style ="text-align: center;">Best Performing Items</h3>
     <div class = 'grid'>
-        <product-card v-for = 'product in productlistings' :productid = 'product.id' :key = 'product.id' 
-        :name = 'product.name' :desc = 'product.description' :brand = 'product.brand' :price = 'product.price'>
+        <product-card :productid = 'productlistings[0].id' :key = 'productlistings[0].id' 
+        :name = 'productlistings[0].name' :desc = 'productlistings[0].description' :brand = 'productlistings[0].brand' :price = 'productlistings[0].price'>
+        </product-card>
+        <product-card :productid = 'productlistings[3].id' :key = 'productlistings[3].id' 
+        :name = 'productlistings[3].name' :desc = 'productlistings[3].description' :brand = 'productlistings[3].brand' :price = 'productlistings[3].price'>
+        </product-card>
+        <product-card :productid = 'productlistings[4].id' :key = 'productlistings[4].id' 
+        :name = 'productlistings[4].name' :desc = 'productlistings[4].description' :brand = 'productlistings[4].brand' :price = 'productlistings[4].price'>
         </product-card>
     </div>
 </div></template>
@@ -60,7 +67,7 @@
     display: grid;
     grid-gap: 2em;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    padding: 10%;
+    padding: 2em 10%;
 }
 
 .header-image{
@@ -69,5 +76,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #999;
+    margin-bottom: 10%
 }
 </style>
