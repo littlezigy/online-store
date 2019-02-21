@@ -6,7 +6,8 @@
     "dev": "cd frontend && npm run dev & cd backend && npm run dev",
     "start": "cd backend && npm i && npm start & cd frontend && npm i && npm start --prefix dist",
     "frontend-deploy": "git subtree push --prefix frontend/dist heroku-front master",
-    "backend-deploy": "git subtree push --prefix backend heroku-back master"
+    "backend-deploy": "git subtree push --prefix backend heroku-back master",
+    "deploy": "npm run frontend-deploy && npm run backend-deploy"
   },
   "dependencies": {
     "sails": ""

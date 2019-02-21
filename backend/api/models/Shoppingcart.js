@@ -17,5 +17,10 @@ module.exports = {
       model: 'user'
       //unique: true
     }
+  },
+  afterDestroy: function(destroyedRecords, cb) {
+      // Destroy any productinstance with a cart ID of one of the 
+      // deleted teacher models
+      Productitem.destroy({cart: _.pluck(destroyedRecords, 'id')}).exec(cb);
   }
 };

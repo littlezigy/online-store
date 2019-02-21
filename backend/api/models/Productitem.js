@@ -6,8 +6,9 @@ module.exports = {
         brand: 'string',
         quantity: {
             type: 'number',
-            defaultsTo: 1
+            defaultsTo: 0
         },
+        picid: 'number',
         cart: {
             model: 'shoppingcart'
         }

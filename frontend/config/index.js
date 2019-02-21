@@ -2,7 +2,7 @@
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-require('dotenv').config()
+var dotenv = require("dotenv").config({path: __dirname + "/.env"});
 const path = require('path')
 
 module.exports = {

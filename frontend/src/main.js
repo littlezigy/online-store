@@ -6,6 +6,7 @@ import router from './router'
 //import bulma from '../node_modules/bulma'
 import '../node_modules/bulma/css/bulma.min.css'
 import  './globals'
+var dotenv = require('dotenv').config()
 
 Vue.config.productionTip = false
 

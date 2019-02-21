@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'https://ecommerce-demo-backend.herokuapp.com',
+    baseURL: process.env.VUE_APP_API,
     withCredentials: true
 })

@@ -51,7 +51,8 @@ module.exports = {
                 name: product.name,
                 description: product.description,
                 price: product.price,
-                brand: product.brand
+                brand: product.brand,
+                picid: product.id
             });
             console.log('Item quantity: ', cartitem.quantity);
             cartitem.quantity++;

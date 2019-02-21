@@ -16,14 +16,14 @@
                 <th>Total</th>
             </thead>
             <tr v-for= 'field in cartitem' :key = field.key>
-                <td><img v-bind:src = "`./static/productpics/${field.id}.jpg`" class = 'image is-64x64'/></td>
+                <td><figure class = 'image is-64x64'><img v-bind:src = "`./static/productpics/${field.picid}.jpg`"/></figure></td>
                 <td>{{field.name}}</td>
                 <td>{{field.brand}}</td>
                 <td>
                     <span class = 'is-link tag button' @click = 'updatecart(field.id, field.quantity)'>Update</span>
                     <input size = 3 maxlength = 3 text = '1' v-model='field.quantity'> 
-                    <span class = 'is-danger tag'> Delete
-                        <button class = 'delete' @click = 'removefromcart(field.id)'>
+                    <span class = 'is-danger tag button' @click = 'removefromcart(field.id)'> Delete
+                        <button class = 'delete'>
                         </button>
                     </span>
                 </td>
@@ -74,12 +74,16 @@ export default {
         },
         removefromcart: function(query) {
             console.log("REMOVE " + query);
-            this.deleteurl = 'shoppingcart/' + sessionStorage.cartid + '/product/' + query;
+            this.deleteurl = '/productitem/' + query;
             api.delete(this.deleteurl);
             window.location.reload();
         },
         updatecart: function(id, quantity) {
-            console.log("Product instance id: ", id, "\nProduct quantity: ", quantity);
+            var productinstanceurl = '/productitem/' +  id;
+            console.log("Product instance id: ", id, "\nProduct quantity: ", quantity, '\n', productinstanceurl);
+            api.patch(productinstanceurl, {
+                quantity: quantity
+            })
         }
     },
     computed: {
