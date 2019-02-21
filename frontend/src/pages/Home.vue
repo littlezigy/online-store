@@ -47,6 +47,7 @@
             });
             console.log(process.env.NODE_ENV);
             console.log(process.env.TEST);
+            console.log(process.env.VUE_APP_API);
         },
         methods: {
             
