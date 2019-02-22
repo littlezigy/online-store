@@ -76,13 +76,17 @@ module.exports = {
       // ssl: true,
 
     },
+    productionMongo: {
+      adapter: require('sails-mongo'),
+      url: process.env.MONGODB_URI
+    }
 
   },
 
 
 
   models: {
-    connection: 'productionMongo',
+    datastore: 'productionMongo',
 
     /***************************************************************************
     *                                                                          *
@@ -106,6 +110,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     // cascadeOnDestroy: false,
+
 
   },
 
