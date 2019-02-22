@@ -10,7 +10,7 @@ module.exports = {
         var logindetails = req.body;
         var uid;
         var adminusers = await Usertype.find(
-            {id: 1}).
+            {name: "admin"}).
             populate('users', {
             where: {
                 username: logindetails.username,
