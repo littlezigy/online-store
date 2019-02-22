@@ -48,6 +48,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
+      adapter: require('sails-mongo'),
+      url: process.env.MONGODB_URI
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
@@ -168,6 +170,8 @@ module.exports = {
   *                                                                          *
   ***************************************************************************/
   session: {
+    adapter: 'connect-mongo',
+    url: process.env.MONGODB_URI
 
     /***************************************************************************
     *                                                                          *

@@ -7,8 +7,10 @@
 
 module.exports = {
     neworder: async function(req, res) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
         var sendemail = require('./send-mail');
         var sendtext = require('./send-sms');
+        res.write("Testing res.write");
 
         var orderdetails = 'New order created at '+ new Date() + '\nItem  ---> Price'; //Message that will be sent to users.
         var item;
@@ -31,10 +33,9 @@ module.exports = {
 
         var user = await User.findOne({id:printcart.owner});
 
-        ordermessage += await sendemail(email, orderdetails); 
-        console.log("\nAfter email, the message is ", ordermessage);
+        await sendemail(email, orderdetails, res); 
 
-        ordermessage += await sendtext(phone, orderdetails);
+        ordermessage += await sendtext(phone, orderdetails, res);
         console.log("\nAfter text, Printing order message to be returned to browser ", ordermessage);
 
         await Order.create({
@@ -46,7 +47,8 @@ module.exports = {
         });
         console.log("Final message ", ordermessage);
 
-        res.send(ordermessage);
+        res.end("Blop!");
+        //res.end(ordermessage);
     }
 };
 

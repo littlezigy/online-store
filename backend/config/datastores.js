@@ -53,5 +53,9 @@ module.exports.datastores = {
 
   },
 
+  productionMongo: {
+    adapter: require('sails-mongo'),
+    url: process.env.MONGODB_URI
+  }
 
 };

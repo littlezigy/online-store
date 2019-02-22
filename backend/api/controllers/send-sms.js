@@ -1,5 +1,5 @@
-module.exports = async function sendsms(toMobileNumber, msgBody) {
-  var processresponse = "\n";
+module.exports = async function sendsms(toMobileNumber, msgBody, res) {
+  var processresponse;
   twilio_client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
   await twilio_client.api
@@ -15,12 +15,13 @@ module.exports = async function sendsms(toMobileNumber, msgBody) {
           to: toMobileNumber,
           from: process.env.TWILIO_MOBILE_NUMBER
         }).then(message => console.log(message.sid)).done();
-        processresponse = "You will receive an SMS message with your order details soon.";
+        processresponse = "\nYou will receive an SMS message with your order details soon.";
       } else {
-        processresponse = "This phone number is not in system. Please contact administrator to add your number to the system.";
+        processresponse = "\nThis phone number is not in system. Please contact administrator to add your number to the system.";
       }
     });
 
+    res.write(processresponse);
   for (var i = 1; i < 3; i++){
     if(processresponse == undefined || processresponse == false) {
       i = 1;
