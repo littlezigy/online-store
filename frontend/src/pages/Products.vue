@@ -4,7 +4,7 @@
             <h1 class="title has-text-centered">{{message}}</h1>
         </div>
         <div class = 'grid'>
-            <product-card v-for = 'product in productlistings' :productid = 'product.id' :key = 'product.id' 
+            <product-card v-for = 'product in productlistings' :productid = 'product.productid' :key = 'product.id' 
             :name = 'product.name' :pix = 'product.pix' :desc = 'product.description' :brand = 'product.brand' :price = 'product.price'>
             </product-card>
         </div>
