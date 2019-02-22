@@ -90,8 +90,9 @@ module.exports = {
     attributes: {
       createdAt: { type: 'number', autoCreatedAt: true, },
       updatedAt: { type: 'number', autoUpdatedAt: true, },
-      id: { type: 'string', columnName: '_id'}, // <-- for MongoDB
+      id: { type: 'number', columnName: '_id'}, // <-- for MongoDB
     },
+    schema: true,
 
     /***************************************************************************
     *                                                                          *
@@ -181,6 +182,8 @@ module.exports = {
   *                                                                          *
   ***************************************************************************/
   session: {
+    adapter: 'connect-mongo',
+    url: process.env.MONGODB_URI,
 
     /***************************************************************************
     *                                                                          *
