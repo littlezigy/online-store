@@ -22,6 +22,7 @@ module.exports = {
     },
     brand: 'string',
     quantity: 'number',
+    productid: 'number',
     
     //relationships
     category: {

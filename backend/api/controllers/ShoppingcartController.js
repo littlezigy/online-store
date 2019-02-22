@@ -52,7 +52,7 @@ module.exports = {
                 description: product.description,
                 price: product.price,
                 brand: product.brand,
-                picid: product.id
+                picid: product.productid
             });
             console.log('Item quantity: ', cartitem.quantity);
             cartitem.quantity++;
