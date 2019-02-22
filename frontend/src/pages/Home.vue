@@ -17,14 +17,14 @@
     </div>
     <h3 class = 'subtitle is-1' style ="text-align: center;">Best Performing Items</h3>
     <div class = 'grid'>
-        <product-card :productid = 'productlistings[0].id' 
+        <product-card :productid = 'productlistings[0].productid' 
         :key = 'productlistings[0].id' 
         :name = 'productlistings[0].name' :desc = 'productlistings[0].description' :brand = 'productlistings[0].brand' :price = 'productlistings[0].price'>
         </product-card>
-        <product-card :productid = 'productlistings[3].id' :key = 'productlistings[3].id' 
+        <product-card :productid = 'productlistings[3].productid' :key = 'productlistings[3].id' 
         :name = 'productlistings[3].name' :desc = 'productlistings[3].description' :brand = 'productlistings[3].brand' :price = 'productlistings[3].price'>
         </product-card>
-        <product-card :productid = 'productlistings[4].id' :key = 'productlistings[4].id' 
+        <product-card :productid = 'productlistings[4].productid' :key = 'productlistings[4].id' 
         :name = 'productlistings[4].name' :desc = 'productlistings[4].description' :brand = 'productlistings[4].brand' :price = 'productlistings[4].price'>
         </product-card>
     </div>
