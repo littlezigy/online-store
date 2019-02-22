@@ -171,7 +171,7 @@ module.exports = {
   ***************************************************************************/
   session: {
     adapter: 'connect-mongo',
-    url: process.env.MONGODB_URI
+    url: process.env.MONGODB_URI,
 
     /***************************************************************************
     *                                                                          *
