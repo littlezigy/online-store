@@ -30,7 +30,23 @@
                 productlistings: 0,
             }
         },
-        beforeCreate: function() {
+        created() {
+            
+            /*----------------List products on frontpage------------------------*/
+            api.get('/products').
+            then(response => {
+                var self = this;
+                self.productlistings=response.data;
+            });
+
+            /*-------------------Testing environment variables-----------------------*/
+            console.log(process.env.NODE_ENV);
+            console.log(process.env.TEST);
+            console.log(process.env.VUE_APP_API);
+            
+        },
+        mounted() {
+            /**--------------------Create Frontpage banner------------------ */
             document.body.className = 'home';
             var herohome = document.getElementById('banner');
             herohome.innerHTML += 
@@ -42,17 +58,9 @@
             </div>';
             herohome.classList = 'hero header-image is-large';
         },
-        created() {
-            api.get('/products').
-            then(response => {
-                var self = this;
-                self.productlistings=response.data;
-            });
-            console.log(process.env.NODE_ENV);
-            console.log(process.env.TEST);
-            console.log(process.env.VUE_APP_API);
-        },
+
         beforeDestroy() {
+            /*----------------Destroy frontpage banner---------------------*/
             var herohome = document.getElementById('banner');
             herohome.classList = '';
             var herobody = document.getElementById('herobody');
