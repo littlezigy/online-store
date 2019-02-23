@@ -90,7 +90,7 @@ module.exports = {
     attributes: {
       createdAt: { type: 'number', autoCreatedAt: true, },
       updatedAt: { type: 'number', autoUpdatedAt: true, },
-      id: { type: 'number', columnName: '_id'}, // <-- for MongoDB
+      id: { type: 'string', columnName: '_id'}, // <-- for MongoDB
     },
     schema: true,
 

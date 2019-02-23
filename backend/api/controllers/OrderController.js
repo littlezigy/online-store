@@ -10,7 +10,6 @@ module.exports = {
         res.writeHead(200, {'Content-Type': 'text/plain'});
         var sendemail = require('./send-mail');
         var sendtext = require('./send-sms');
-        res.write("Testing res.write");
 
         var orderdetails = 'New order created at '+ new Date() + '\nItem  ---> Price'; //Message that will be sent to users.
         var item;

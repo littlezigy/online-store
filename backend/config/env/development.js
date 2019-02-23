@@ -1,18 +1,14 @@
 require('dotenv').config();
 
+MONGODB_URI="mongodb://littlezigy:kaysie12@ds161190.mlab.com:61190/heroku_81sqfrx3"
+
+
 module.exports = {
-  MONGODB_URI='',
   /***************************************************************************
    * Set the default database connection for models in the development       *
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
   models: {
-    datastore: 'productionMongo',
-    attributes: {
-      createdAt: { type: 'number', autoCreatedAt: true, },
-      updatedAt: { type: 'number', autoUpdatedAt: true, },
-      id: { type: 'number', columnName: '_id'}, // <-- for MongoDB
-    },
     schema: true,
   },
 

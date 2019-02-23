@@ -21,7 +21,7 @@ module.exports = {
             var user = await User.findOne({id:req.session.user.id}).populate('cart');
             var usercart = user.cart[0];
             var createnewproductinstance = 1;
-            var product = await Products.findOne({id: req.body.productid});
+            var product = await Products.findOne({productid: req.body.productid});
             console.log("Product details ", product);
             console.log("User found. Has cart?\n", user.cart);
             

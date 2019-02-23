@@ -10,6 +10,7 @@ import ThankYou from '@/pages/ThankYou'
 import UserDashboard from '@/pages/UserDashboard'
 
 // Admin components
+import Admin from '@/pages/admin/Admin'
 import Dashboard from '@/pages/admin/Dashboard'
 import CreateProduct from '@/pages/admin/CreateProduct'
 import EditProduct from '@/pages/admin/EditProduct'
@@ -31,10 +32,14 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
 
-      component: Dashboard,
+      component: Admin,
 
       children: [
         {
+          path: 'dashboard',
+          name: 'adminDashboard',
+          component: Dashboard
+        }, {
           path: 'createproduct',
           name: 'CreateProduct',
           component: CreateProduct

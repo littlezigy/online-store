@@ -1,14 +1,16 @@
 <template>
   <div>
-    <nav class = 'navbar is-dark'>
-        <div class = 'navbar-brand' style = 'padding : 0 0.5em'>
-          <router-link to = '/'> <img src = "@/assets/logo.png" width = 80></router-link>
-          <a role = 'button' class = 'navbar-burger burger' target = 'mainmenu' @click = 'expandmenu()'>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
+    <section id = "banner">
+      <div class = 'hero-head'>
+        <nav class = 'navbar'>
+          <div class = 'navbar-brand' style = 'padding : 0 0.5em'>
+            <router-link to = '/'> <img src = "@/assets/logo.png" width = 80></router-link>
+            <a role = 'button' class = 'navbar-burger burger' target = 'mainmenu' @click = 'expandmenu()'>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
           <div class = 'navbar-menu' v-bind:class = "{'is-active': isactive}" id = 'mainmenu'>
             <div class = 'navbar-end'>
               <!-- Navigation links -->
@@ -19,10 +21,13 @@
               <router-link v-if='showlogin' to = '/admin/login' class = 'navbar-item'>Admin</router-link>
             </div>
           </div>
-    </nav>
+        </nav>
+      </div>
+    </section>
 
     <!-- Route Outlet -->
     <router-view></router-view>
+
     <footer class = 'footer'>
       <div>
         <h3 class = 'strong'>My Account</h3>
@@ -51,8 +56,13 @@ export default {
     return {
       isactive: false,
       footerwelcome: "",
-      showlogin: true
+      showlogin: true,
+      heromessage: '',
+      herosubtitle: ''
     }
+  },
+  props: {
+    banner: ''
   },
   methods: {
     expandmenu: function() {
@@ -95,10 +105,20 @@ export default {
 </script>
 
 <style>
+.grid {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 2em 10%;
+}
+
 footer {
   text-align: center;
 }
 .container {
   padding: 1em 3em;
+}
+.none {
+  display: none;
 }
 </style>
