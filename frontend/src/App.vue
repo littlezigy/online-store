@@ -14,11 +14,11 @@
           <div class = 'navbar-menu' v-bind:class = "{'is-active': isactive}" id = 'mainmenu'>
             <div class = 'navbar-end'>
               <!-- Navigation links -->
-              <router-link to = '/' class = 'navbar-item'>Home</router-link>
-              <router-link v-if='showlogin' to = '/login' class = 'navbar-item'>Login</router-link>
-              <router-link to = '/products' class = 'navbar-item'>Products</router-link>
-              <router-link to = '/cart' class = 'navbar-item'>Cart</router-link>
-              <router-link v-if='showlogin' to = '/admin/login' class = 'navbar-item'>Admin</router-link>
+              <router-link to = '/' class = 'navbar-item is-size-5'>Home</router-link>
+              <router-link v-if='showlogin' to = '/login' class = 'navbar-item is-size-5'>Login</router-link>
+              <router-link to = '/products' class = 'navbar-item is-size-5'>Products</router-link>
+              <router-link to = '/cart' class = 'navbar-item is-size-5'>Cart</router-link>
+              <router-link v-if='showlogin' to = '/admin/login' class = 'navbar-item is-size-5'>Admin</router-link>
             </div>
           </div>
         </nav>
